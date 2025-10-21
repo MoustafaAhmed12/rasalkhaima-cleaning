@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
   <head>
-        <!-- main Seo per Page -->
+    <!-- main Seo per Page -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -26,7 +26,10 @@
     <meta property="og:locale" content="ar_QA" />
 
     <!-- Canonical URL -->
-    <link rel="canonical" href="https://rasalkhaima-cleaning.com/services.html" />
+    <link
+      rel="canonical"
+      href="https://rasalkhaima-cleaning.com/services.html"
+    />
 
     <!-- Favicon -->
     <link
@@ -54,7 +57,7 @@
 
     <!-- SEO Config -->
     <script src="assets/js/seo-config.js" defer></script>
-        <!-- Google Analytics -->
+    <!-- Google Analytics -->
     <script
       async
       src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"
@@ -83,7 +86,6 @@
     </script>
     <!-- ----------------------------------------------------------------------------------- -->
 
-
     <!-- ======= Google Font =======-->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -99,7 +101,6 @@
       href="assets/vendors/bootstrap-icons/font/bootstrap-icons.min.css"
       rel="stylesheet"
     />
-    <link href="assets/vendors/glightbox/glightbox.min.css" rel="stylesheet" />
     <link href="assets/vendors/swiper/swiper-bundle.min.css" rel="stylesheet" />
     <link href="assets/vendors/aos/aos.css" rel="stylesheet" />
     <!-- End Styles-->
@@ -533,11 +534,13 @@
 
             <!-- Service 8 -->
             <div class="service-card-page" data-aos="fade-up">
+              <!-- <a href="assets/images/glass1.jpg" class="glightbox"> -->
               <img
                 src="assets/images/glass1.jpg"
-                alt="تنظيف الزجاج"
+                alt="تنظيف الزجاج والنوافذ"
                 class="service-image-page"
               />
+              <!-- </a> -->
               <div class="service-content-page">
                 <h3 class="service-title-page">تنظيف الزجاج والنوافذ</h3>
                 <p class="service-description-page">
@@ -908,52 +911,20 @@
     <!-- End Back to top-->
 
     <!-- ======= Javascripts =======-->
-    <script src="assets/vendors/bootstrap/bootstrap.bundle.min.js"></script>
-    <script src="assets/vendors/gsap/gsap.min.js"></script>
-    <script src="assets/vendors/imagesloaded/imagesloaded.pkgd.min.js"></script>
-    <script src="assets/vendors/isotope/isotope.pkgd.min.js"></script>
-    <script src="assets/vendors/glightbox/glightbox.min.js"></script>
-    <script src="assets/vendors/swiper/swiper-bundle.min.js"></script>
+    <script
+      defer
+      src="assets/vendors/bootstrap/bootstrap.bundle.min.js"
+    ></script>
+    <script defer src="assets/vendors/swiper/swiper-bundle.min.js"></script>
     <script src="assets/vendors/aos/aos.js"></script>
-    <script src="assets/vendors/purecounter/purecounter.js"></script>
-    <script src="assets/js/custom.js"></script>
-    <!-- <script src="assets/js/send_email.js"></script> -->
-    <!-- End JavaScripts-->
-    <!-- Swiper CSS (أضفه في head) -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
-    />
-
-    <!-- Swiper JS (أضفه قبل نهاية body) -->
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script defer src="assets/vendors/purecounter/purecounter.js"></script>
+    <script defer src="assets/js/custom.js"></script>
 
     <script>
       AOS.init({
-        duration: 1000, // مدة الأنيميشن بالملّي ثانية
-        once: false, // عشان يحصل مرة واحدة بس عند التمرير
-        offset: 100, // المسافة اللي يبدأ عندها الأنيميشن
-      });
-      // Initialize Swiper
-      const heroSwiper = new Swiper(".heroSwiper", {
-        loop: true,
-        autoplay: {
-          delay: 5000,
-          disableOnInteraction: false,
-        },
-        speed: 800,
-        effect: "fade",
-        fadeEffect: {
-          crossFade: true,
-        },
-        navigation: {
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev",
-        },
-        pagination: {
-          el: ".swiper-pagination",
-          clickable: true,
-        },
+        duration: 1000,
+        once: false,
+        offset: 100,
       });
     </script>
   </body>

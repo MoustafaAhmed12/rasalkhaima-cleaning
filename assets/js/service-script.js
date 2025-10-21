@@ -237,7 +237,6 @@ function displayNotFound() {
  * تشغيل عند تحميل الصفحة
  */
 window.addEventListener("DOMContentLoaded", function () {
-  debugger
   const serviceSlug = getServiceSlugFromURL();
   if (serviceSlug) {
     const service = findService(serviceSlug);
@@ -477,27 +476,4 @@ function applyServicePageSEO(service) {
     script.textContent = JSON.stringify(schema);
     document.head.appendChild(script);
   });
-}
-
-// Get service slug from URL
-function getServiceSlug() {
-  const urlParams = new URLSearchParams(window.location.search);
-  return urlParams.get("service") || window.location.pathname.split("/").pop();
-}
-
-// Initialize on page load
-window.addEventListener("DOMContentLoaded", function () {
-  const slug = getServiceSlug();
-  const service = servicesData.find((s) => s.slug === slug);
-
-  if (service) {
-    applyServicePageSEO(service);
-    displayServiceContent(service);
-  } else {
-    window.location.href = "/services";
-  }
-});
-
-function displayServiceContent(service) {
-  console.log("Displaying service:", service.name);
 }

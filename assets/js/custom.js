@@ -1,93 +1,31 @@
-document.addEventListener("DOMContentLoaded", function () {
-  
-  
 
-  const sections = document.querySelectorAll(".section");
-  const navLinks = document.querySelectorAll(".fbs__net-navbar .scroll-link");
+document.addEventListener("DOMContentLoaded", () => {
+  const lazyImages = document.querySelectorAll("img[data-src]");
 
-  function removeActiveClasses() {
-    if (navLinks) {
-      navLinks.forEach((link) => link.classList.remove("active"));
-    }
-  }
+  const imageObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const img = entry.target;
 
-  function addActiveClass(currentSectionId) {
-    const activeLink = document.querySelector(
-      `.fbs__net-navbar .scroll-link[href="#${currentSectionId}"]`
-    );
-    if (activeLink) {
-      activeLink.classList.add("active");
-    }
-  }
+        // Replace placeholder with the real image
+        img.src = img.getAttribute("data-src");
+        img.removeAttribute("data-src");
 
-  function getCurrentSection() {
-    let currentSection = null;
-    let minDistance = Infinity;
-    if (sections) {
-      sections.forEach((section) => {
-        const rect = section.getBoundingClientRect();
-        const distance = Math.abs(rect.top - window.innerHeight / 4);
+        // Add fade-in effect
+        img.classList.add("fade-in");
 
-        if (distance < minDistance && rect.top < window.innerHeight) {
-          minDistance = distance;
-          currentSection = section.getAttribute("id");
-        }
-      });
-    }
-
-    return currentSection;
-  }
-
-  function updateActiveLink() {
-    const currentSectionId = getCurrentSection();
-    if (currentSectionId) {
-      removeActiveClasses();
-      addActiveClass(currentSectionId);
-    }
-  }
-
-  window.addEventListener("scroll", updateActiveLink);
-
-  const portfolioGrid = document.querySelector('#portfolio-grid');
-  if (portfolioGrid) {
-    var iso = new Isotope("#portfolio-grid", {
-      itemSelector: ".portfolio-item",
-      layoutMode: "masonry",
+        observer.unobserve(img);
+      }
     });
+  });
 
-    if (iso) {
-      iso.on("layoutComplete", updateActiveLink);
-
-      imagesLoaded("#portfolio-grid", function () {
-        iso.layout();
-        updateActiveLink();
-      });
-    }
-
-    var filterButtons = document.querySelectorAll(".filter-button");
-    if (filterButtons) {
-      filterButtons.forEach(function (button) {
-        button.addEventListener("click", function (e) {
-          e.preventDefault();
-          var filterValue = button.getAttribute("data-filter");
-          iso.arrange({ filter: filterValue });
-
-          filterButtons.forEach(function (btn) {
-            btn.classList.remove("active");
-          });
-          button.classList.add("active");
-          updateActiveLink();
-        });
-      });
-    }
-
-    updateActiveLink();
-  }
+  lazyImages.forEach((img) => {
+    imageObserver.observe(img);
+  });
 });
 
 const navbarScrollInit = () => {
   var navbar = document.querySelector(".fbs__net-navbar");
-
   var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
   if (navbar) {
     if (scrollTop > 0) {
@@ -106,130 +44,10 @@ const navbarInit = () => {
   });
 };
 
-// ======= Marquee =======
-const logoMarqueeInit = () => {
-  const wrapper = document.querySelector(".logo-wrapper");
-  const boxes = gsap.utils.toArray(".logo-item");
-  
-  if (boxes.length > 0) {
-    const loop = horizontalLoop(boxes, {
-      paused: false,
-      repeat: -1,
-      speed: 0.25,
-      reversed: false,
-    });
-    
-    function horizontalLoop(items, config) {
-      items = gsap.utils.toArray(items);
-      config = config || {};
-      let tl = gsap.timeline({
-          repeat: config.repeat,
-          paused: config.paused,
-          defaults: { ease: "none" },
-          onReverseComplete: () =>
-            tl.totalTime(tl.rawTime() + tl.duration() * 100),
-        }),
-        length = items.length,
-        startX = items[0].offsetLeft,
-        times = [],
-        widths = [],
-        xPercents = [],
-        curIndex = 0,
-        pixelsPerSecond = (config.speed || 1) * 100,
-        snap =
-          config.snap === false ? (v) => v : gsap.utils.snap(config.snap || 1), // some browsers shift by a pixel to accommodate flex layouts, so for example if width is 20% the first element's width might be 242px, and the next 243px, alternating back and forth. So we snap to 5 percentage points to make things look more natural
-        totalWidth,
-        curX,
-        distanceToStart,
-        distanceToLoop,
-        item,
-        i;
-      gsap.set(items, {
-        // convert "x" to "xPercent" to make things responsive, and populate the widths/xPercents Arrays to make lookups faster.
-        xPercent: (i, el) => {
-          let w = (widths[i] = parseFloat(gsap.getProperty(el, "width", "px")));
-          xPercents[i] = snap(
-            (parseFloat(gsap.getProperty(el, "x", "px")) / w) * 100 +
-              gsap.getProperty(el, "xPercent")
-          );
-          return xPercents[i];
-        },
-      });
-      gsap.set(items, { x: 0 });
-      totalWidth =
-        items[length - 1].offsetLeft +
-        (xPercents[length - 1] / 100) * widths[length - 1] -
-        startX +
-        items[length - 1].offsetWidth *
-          gsap.getProperty(items[length - 1], "scaleX") +
-        (parseFloat(config.paddingRight) || 0);
-      for (i = 0; i < length; i++) {
-        item = items[i];
-        curX = (xPercents[i] / 100) * widths[i];
-        distanceToStart = item.offsetLeft + curX - startX;
-        distanceToLoop =
-          distanceToStart + widths[i] * gsap.getProperty(item, "scaleX");
-        tl.to(
-          item,
-          {
-            xPercent: snap(((curX - distanceToLoop) / widths[i]) * 100),
-            duration: distanceToLoop / pixelsPerSecond,
-          },
-          0
-        )
-          .fromTo(
-            item,
-            {
-              xPercent: snap(
-                ((curX - distanceToLoop + totalWidth) / widths[i]) * 100
-              ),
-            },
-            {
-              xPercent: xPercents[i],
-              duration:
-                (curX - distanceToLoop + totalWidth - curX) / pixelsPerSecond,
-              immediateRender: false,
-            },
-            distanceToLoop / pixelsPerSecond
-          )
-          .add("label" + i, distanceToStart / pixelsPerSecond);
-        times[i] = distanceToStart / pixelsPerSecond;
-      }
-      function toIndex(index, vars) {
-        vars = vars || {};
-        Math.abs(index - curIndex) > length / 2 &&
-          (index += index > curIndex ? -length : length); // always go in the shortest direction
-        let newIndex = gsap.utils.wrap(0, length, index),
-          time = times[newIndex];
-        if (time > tl.time() !== index > curIndex) {
-          // if we're wrapping the timeline's playhead, make the proper adjustments
-          vars.modifiers = { time: gsap.utils.wrap(0, tl.duration()) };
-          time += tl.duration() * (index > curIndex ? 1 : -1);
-        }
-        curIndex = newIndex;
-        vars.overwrite = true;
-        return tl.tweenTo(time, vars);
-      }
-      tl.next = (vars) => toIndex(curIndex + 1, vars);
-      tl.previous = (vars) => toIndex(curIndex - 1, vars);
-      tl.current = () => curIndex;
-      tl.toIndex = (index, vars) => toIndex(index, vars);
-      tl.times = times;
-      tl.progress(1, true).progress(0, true); // pre-render for performance
-      if (config.reversed) {
-        tl.vars.onReverseComplete();
-        tl.reverse();
-      }
-      return tl;
-    }
-  }
-};
 
-document.addEventListener("DOMContentLoaded", logoMarqueeInit);
 
 // ======= Navbar Scroll =======
 document.addEventListener("DOMContentLoaded", function () {
-  logoMarqueeInit();
   navbarInit();
   window.addEventListener("scroll", navbarScrollInit);
 });
@@ -300,15 +118,6 @@ const swiperInit = () => {
 
 document.addEventListener("DOMContentLoaded", swiperInit);
 
-// ======= Glightbox =======
-const glightBoxInit = () => {
-  const lightbox = GLightbox({
-    touchNavigation: true,
-    loop: true,
-    autoplayVideos: true,
-  });
-};
-document.addEventListener("DOMContentLoaded", glightBoxInit);
 
 // ======= BS OffCanvass =======
 const bsOffCanvasInit = () => {
@@ -389,7 +198,7 @@ const aosInit = () => {
   AOS.init({
     duration: 800,
     easing: 'slide',
-    once: true
+    once: false
   });
 }
 document.addEventListener("DOMContentLoaded", aosInit);
