@@ -1,4 +1,3 @@
-
 document.addEventListener("DOMContentLoaded", () => {
   const lazyImages = document.querySelectorAll("img[data-src]");
 
@@ -37,14 +36,14 @@ const navbarScrollInit = () => {
 };
 
 const navbarInit = () => {
-  document.querySelectorAll('.dropdown-toggle[href="#"]').forEach(function (el, index) {
-    el.addEventListener("click", function (event) {
-      event.stopPropagation();
+  document
+    .querySelectorAll('.dropdown-toggle[href="#"]')
+    .forEach(function (el, index) {
+      el.addEventListener("click", function (event) {
+        event.stopPropagation();
+      });
     });
-  });
 };
-
-
 
 // ======= Navbar Scroll =======
 document.addEventListener("DOMContentLoaded", function () {
@@ -52,71 +51,6 @@ document.addEventListener("DOMContentLoaded", function () {
   window.addEventListener("scroll", navbarScrollInit);
 });
 
-// ======= Swiper =======
-const swiperInit = () => {
-  var swiper = new Swiper(".testimonialSwiper", {
-    slidesPerView: 1,
-    speed: 700,
-    spaceBetween: 30,
-    loop: true,
-    pagination: {
-      el: ".swiper-pagination",
-      clickable: true,
-    },
-    breakpoints: {
-      640: {
-        slidesPerView: 1.5,
-        spaceBetween: 20,
-      },
-      768: {
-        slidesPerView: 2.5,
-        spaceBetween: 30,
-      },
-      1024: {
-        slidesPerView: 2.5,
-        spaceBetween: 30,
-      },
-    },
-    navigation: {
-      nextEl: ".custom-button-next",
-      prevEl: ".custom-button-prev",
-    },
-  });
-
-  const progressCircle = document.querySelector(".autoplay-progress svg");
-  const progressContent = document.querySelector(".autoplay-progress span");
-  if (progressCircle && progressContent ) {
-    var swiper2 = new Swiper(".sliderSwiper", {
-      slidesPerView: 1,
-      speed: 700,
-      spaceBetween: 0,
-      loop: true,
-      centeredSlides: true,
-      autoplay: {
-        delay: 7000,
-        disableOnInteraction: false
-      },
-      pagination: {
-        el: ".swiper-pagination",
-        clickable: true,
-      },
-      navigation: {
-        nextEl: ".custom-button-next",
-        prevEl: ".custom-button-prev",
-      },
-
-      on: {
-        autoplayTimeLeft(s, time, progress) {
-          progressCircle.style.setProperty("--progress", 1 - progress);
-          progressContent.textContent = `${Math.ceil(time / 1000)}s`;
-        }
-      }
-    });
-  }
-
-};
-
-document.addEventListener("DOMContentLoaded", swiperInit);
 
 
 // ======= BS OffCanvass =======
@@ -155,7 +89,6 @@ const backToTopInit = () => {
 };
 
 document.addEventListener("DOMContentLoaded", backToTopInit);
-
 
 // ======= Inline SVG =======
 const inlineSvgInit = () => {
@@ -196,11 +129,11 @@ document.addEventListener("DOMContentLoaded", inlineSvgInit);
 // ======= AOS =======
 const aosInit = () => {
   AOS.init({
-    duration: 800,
-    easing: 'slide',
-    once: false
+    duration: 1000,
+    once: false,
+    offset: 100,
   });
-}
+};
 document.addEventListener("DOMContentLoaded", aosInit);
 
 // ======= PureCounter =======
@@ -208,49 +141,49 @@ const pureCounterInit = () => {
   new PureCounter({
     selector: ".purecounter",
   });
-}
+};
 document.addEventListener("DOMContentLoaded", pureCounterInit);
 
 // ======= Disable Click Navbar Dropdown =======
 const addHoverEvents = (dropdown) => {
-  const dropdownToggle = dropdown.querySelector('.dropdown-toggle');
+  const dropdownToggle = dropdown.querySelector(".dropdown-toggle");
 
   const preventClick = (event) => event.preventDefault();
   const showDropdown = () => {
-    dropdown.classList.add('show');
-    dropdownToggle.setAttribute('aria-expanded', 'true');
-    const dropdownMenu = dropdown.querySelector('.dropdown-menu');
-    dropdownMenu.classList.add('show');
+    dropdown.classList.add("show");
+    dropdownToggle.setAttribute("aria-expanded", "true");
+    const dropdownMenu = dropdown.querySelector(".dropdown-menu");
+    dropdownMenu.classList.add("show");
   };
   const hideDropdown = () => {
-    dropdown.classList.remove('show');
-    dropdownToggle.setAttribute('aria-expanded', 'false');
-    const dropdownMenu = dropdown.querySelector('.dropdown-menu');
-    dropdownMenu.classList.remove('show');
+    dropdown.classList.remove("show");
+    dropdownToggle.setAttribute("aria-expanded", "false");
+    const dropdownMenu = dropdown.querySelector(".dropdown-menu");
+    dropdownMenu.classList.remove("show");
   };
 
   // Disable the click event for toggling the dropdown
-  dropdownToggle.addEventListener('click', preventClick);
+  dropdownToggle.addEventListener("click", preventClick);
 
   // Open dropdown on hover
-  dropdown.addEventListener('mouseover', showDropdown);
+  dropdown.addEventListener("mouseover", showDropdown);
 
   // Close dropdown when mouse leaves
-  dropdown.addEventListener('mouseleave', hideDropdown);
+  dropdown.addEventListener("mouseleave", hideDropdown);
 
   // Store references to the event listeners for later removal
   dropdown.__events = { preventClick, showDropdown, hideDropdown };
 };
 
 const removeHoverEvents = (dropdown) => {
-  const dropdownToggle = dropdown.querySelector('.dropdown-toggle');
+  const dropdownToggle = dropdown.querySelector(".dropdown-toggle");
   const { preventClick, showDropdown, hideDropdown } = dropdown.__events || {};
 
   if (preventClick) {
     // Remove the event listeners
-    dropdownToggle.removeEventListener('click', preventClick);
-    dropdown.removeEventListener('mouseover', showDropdown);
-    dropdown.removeEventListener('mouseleave', hideDropdown);
+    dropdownToggle.removeEventListener("click", preventClick);
+    dropdown.removeEventListener("mouseover", showDropdown);
+    dropdown.removeEventListener("mouseleave", hideDropdown);
 
     // Remove the reference to the stored events
     delete dropdown.__events;
@@ -258,18 +191,16 @@ const removeHoverEvents = (dropdown) => {
 };
 
 const handleNavbarEvents = () => {
-  const dropdowns = document.querySelectorAll('.navbar .dropdown');
-  const dropstarts = document.querySelectorAll('.navbar .dropstart');
-  const dropends = document.querySelectorAll('.navbar .dropend');
+  const dropdowns = document.querySelectorAll(".navbar .dropdown");
+  const dropstarts = document.querySelectorAll(".navbar .dropstart");
+  const dropends = document.querySelectorAll(".navbar .dropend");
 
   if (window.innerWidth >= 992) {
-
     // Add hover events to dropdowns
     dropdowns.forEach(addHoverEvents);
     dropstarts.forEach(addHoverEvents);
     dropends.forEach(addHoverEvents);
   } else {
-
     // Remove hover events from dropdowns
     dropdowns.forEach(removeHoverEvents);
     dropstarts.forEach(removeHoverEvents);
@@ -279,9 +210,9 @@ const handleNavbarEvents = () => {
 
 // Function to handle resizing
 const handleResize = () => {
-  const dropdowns = document.querySelectorAll('.navbar .dropdown');
-  const dropstarts = document.querySelectorAll('.navbar .dropstart');
-  const dropends = document.querySelectorAll('.navbar .dropend');
+  const dropdowns = document.querySelectorAll(".navbar .dropdown");
+  const dropstarts = document.querySelectorAll(".navbar .dropstart");
+  const dropends = document.querySelectorAll(".navbar .dropend");
 
   // Remove hover events before rechecking window size
   dropdowns.forEach(removeHoverEvents);
@@ -293,14 +224,11 @@ const handleResize = () => {
 };
 
 // Call the function on resize event and initially
-window.addEventListener('resize', handleResize);
+window.addEventListener("resize", handleResize);
 handleNavbarEvents();
-
-
 
 // ======= Coming Soon Countdown =======
 const countdownInit = () => {
-
   // Get the current year
   const currentYear = new Date().getFullYear();
   const nextYear = currentYear + 1;
@@ -309,18 +237,18 @@ const countdownInit = () => {
   // Change this "December 31, 2024 23:59:59" to your your website launch date
   // const launchDate = new Date("December 31, 2024 23:59:59").getTime();
 
-
   const x = setInterval(function () {
-
     const now = new Date().getTime();
-      
+
     const distance = launchDate - now;
-      
+
     const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const hours = Math.floor(
+      (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+    );
     const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-      
+
     // Output the result in an element with id
     const daysEl = document.getElementById("days");
     const hoursEl = document.getElementById("hours");
@@ -338,7 +266,7 @@ const countdownInit = () => {
     if (secondsEl) {
       secondsEl.innerText = seconds;
     }
-      
+
     // If the count down is finished, write some text
     if (distance < 0) {
       clearInterval(x);
@@ -346,5 +274,4 @@ const countdownInit = () => {
     }
   }, 1000);
 };
-document.addEventListener('DOMContentLoaded', countdownInit);
-
+document.addEventListener("DOMContentLoaded", countdownInit);
