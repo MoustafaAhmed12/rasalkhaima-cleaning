@@ -335,7 +335,7 @@
       async
       src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"
     ></script>
-    <script>
+    <script defer>
       window.dataLayer = window.dataLayer || [];
       function gtag() {
         dataLayer.push(arguments);
@@ -345,7 +345,7 @@
     </script>
 
     <!-- Google Tag Manager -->
-    <script>
+    <script defer>
       (function (w, d, s, l, i) {
         w[l] = w[l] || [];
         w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
@@ -2236,7 +2236,7 @@
       defer
       src="assets/vendors/bootstrap/bootstrap.bundle.min.js"
     ></script>
-    <script src="assets/vendors/swiper/swiper-bundle.min.js"></script>
+    <script src="assets/vendors/swiper/swiper-bundle.min.js" async></script>
     <script defer src="assets/vendors/aos/aos.js"></script>
     <script defer src="assets/vendors/purecounter/purecounter.js"></script>
     <script defer src="assets/js/custom.js"></script>
