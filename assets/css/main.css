@@ -1044,6 +1044,7 @@
 }
 
 .contact-info {
+
   list-style: none;
   padding: 0;
 }
@@ -1072,6 +1073,7 @@
 
 .contact-info-content {
   flex: 1;
+  text-align: right !important;
 }
 
 .contact-info-label {
