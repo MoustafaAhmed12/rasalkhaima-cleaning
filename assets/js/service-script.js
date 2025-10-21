@@ -35,7 +35,9 @@ function displayService(service) {
           <div class="container">
             <div class="one-service-hero-content">
               <div class="one-service-hero-badge" data-aos="fade-down">خدمة مميزة ⭐</div>
-              <h1 class="one-service-hero-title text-white" data-aos="fade-down">${service.name}</h1>
+              <h1 class="one-service-hero-title text-white" data-aos="fade-down">${
+                service.name
+              }</h1>
               <p class="one-service-hero-subtitle" data-aos="fade-up">
                 ${service.subtitle}
               </p>
@@ -112,7 +114,9 @@ function displayService(service) {
                       📞 اتصل: 55659442
                     </a>
                     <a
-                      href="https://wa.me/97455659442?text=مرحباً، أريد حجز خدمة ${service.name}"
+                      href="https://wa.me/97455659442?text=مرحباً، أريد حجز خدمة ${
+                        service.name
+                      }"
                       target="_blank"
                       class="one-service-btn one-service-btn-whatsapp"
                     >
@@ -136,7 +140,9 @@ function displayService(service) {
                         📞 اتصل الآن
                       </a>
                       <a
-                        href="https://wa.me/97455659442?text=مرحباً، أريد حجز خدمة ${service.name}"
+                        href="https://wa.me/97455659442?text=مرحباً، أريد حجز خدمة ${
+                          service.name
+                        }"
                         target="_blank"
                         class="one-service-btn one-service-btn-whatsapp"
                       >
@@ -225,23 +231,24 @@ function displayNotFound() {
   container.innerHTML = html;
 }
 
-
 // ==================== Main Initialization ====================
 
 /**
  * تشغيل عند تحميل الصفحة
  */
 window.addEventListener("DOMContentLoaded", function () {
+  debugger
   const serviceSlug = getServiceSlugFromURL();
   if (serviceSlug) {
     const service = findService(serviceSlug);
     if (service) {
+      applyServicePageSEO(service);
       displayService(service);
     } else {
       displayNotFound();
     }
   } else {
-    window.location.href = 'services.html';
+    window.location.href = "services.html";
   }
 });
 
@@ -282,3 +289,208 @@ window.addEventListener("scroll", function () {
     // document.querySelector('.navbar')?.classList.remove('scrolled');
   }
 });
+
+// Function to apply SEO for service page
+function applyServicePageSEO(service) {
+  // Keywords mapping for each service
+  const serviceKeywords = {
+    "تنظيف-المنازل":
+      "تنظيف منازل قطر, شركة تنظيف منازل الدوحة, تنظيف بيوت, أفضل شركة تنظيف منازل, تنظيف شامل للمنازل, شركة تنظيف موثوقة",
+    "تنظيف-الفلل-الجديدة":
+      "تنظيف فلل قطر, تنظيف فلل جديدة, تنظيف قصور قطر, شركة تنظيف فلل الدوحة, تنظيف فلل شامل, تنظيف فلل بعد البناء",
+    "مكافحة-الحشرات":
+      "مكافحة حشرات قطر, رش مبيدات قطر, مكافحة قوارض, شركة مكافحة حشرات الدوحة, مكافحة الصراصير, رش حشرات",
+    "جلي-وتلميع-الرخام":
+      "جلي رخام قطر, تلميع رخام, جلي بلاط, تلميع أرضيات رخامية, شركة جلي رخام الدوحة, تلميع رخام احترافي",
+    "مكافحة-النمل-الأبيض":
+      "مكافحة النمل الأبيض قطر, مكافحة العته, رش النمل الأبيض, شركة مكافحة النمل الأبيض الدوحة, القضاء على النمل الأبيض",
+    "عاملات-تنظيف-بالساعة":
+      "عاملات نظافة بالساعة قطر, عاملات تنظيف بالساعة الدوحة, أرقام عاملات نظافة, شركة عاملات تنظيف, عاملات نظافة الوكرة",
+    "تنظيف-المطابخ":
+      "تنظيف مطابخ قطر, تنظيف أفران, إزالة دهون المطبخ, شركة تنظيف مطابخ الدوحة, تنظيف شفاطات المطبخ",
+    "تنظيف-الحمامات":
+      "تنظيف حمامات قطر, تعقيم حمامات, إزالة ترسبات الحمام, شركة تنظيف حمامات الدوحة, تنظيف حمامات احترافي",
+    "تنظيف-الزجاج-والنوافذ":
+      "تنظيف نوافذ قطر, تنظيف زجاج, تلميع نوافذ, شركة تنظيف نوافذ الدوحة, تنظيف واجهات زجاجية",
+  };
+
+  const keywords =
+    serviceKeywords[service.slug] || `${service.name}, خدمات تنظيف قطر`;
+  const title = `${service.name} - راس الخيمة للتنظيفات | ${service.subtitle}`;
+  const description = `${service.description.substring(
+    0,
+    155
+  )}... احجز الآن واتصل على ${service.phone}`;
+  const canonical = `https://rasalkhaima-cleaning.com/service/${service.slug}`;
+
+  // Update Title
+  document.getElementById("page-title").textContent = title;
+  document.title = title;
+
+  // Update Meta Tags
+  document
+    .getElementById("page-description")
+    .setAttribute("content", description);
+  document.getElementById("page-keywords").setAttribute("content", keywords);
+
+  // Update Open Graph
+  document.getElementById("og-title").setAttribute("content", title);
+  document
+    .getElementById("og-description")
+    .setAttribute("content", description);
+  document.getElementById("og-url").setAttribute("content", canonical);
+  document.getElementById("og-image").setAttribute("content", service.image);
+
+  // Update Twitter Card
+  document.getElementById("twitter-title").setAttribute("content", title);
+  document
+    .getElementById("twitter-description")
+    .setAttribute("content", description);
+  document
+    .getElementById("twitter-image")
+    .setAttribute("content", service.image);
+
+  // Update Canonical
+  document.getElementById("canonical-url").setAttribute("href", canonical);
+
+  // Add Service Schema
+  const serviceSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: service.name,
+    description: service.description,
+    provider: {
+      "@type": "LocalBusiness",
+      name: "راس الخيمة للتنظيفات",
+      telephone: `+974-${service.phone}`,
+      url: "https://rasalkhaima-cleaning.com",
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "الدوحة",
+        addressCountry: "QA",
+      },
+    },
+    areaServed: {
+      "@type": "Country",
+      name: "Qatar",
+    },
+    offers: {
+      "@type": "Offer",
+      availability: "https://schema.org/InStock",
+      priceCurrency: "QAR",
+    },
+    image: service.image,
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: "4.9",
+      reviewCount: "200",
+      bestRating: "5",
+      worstRating: "1",
+    },
+  };
+
+  // Add Breadcrumb Schema
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "الرئيسية",
+        item: "https://rasalkhaima-cleaning.com",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "الخدمات",
+        item: "https://rasalkhaima-cleaning.com/services.html",
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: service.name,
+        item: canonical,
+      },
+    ],
+  };
+
+  // Add FAQ Schema (optional but good for SEO)
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: `كم تكلفة ${service.name} في قطر؟`,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: `تختلف تكلفة ${service.name} حسب حجم المكان ونوع الخدمة. اتصل بنا على ${service.phone} للحصول على عرض سعر مجاني.`,
+        },
+      },
+      {
+        "@type": "Question",
+        name: `هل تقدمون خدمة ${service.name} في الدوحة؟`,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: `نعم، نقدم خدمة ${service.name} في الدوحة وجميع مناطق قطر بما في ذلك الوكرة والريان والخور.`,
+        },
+      },
+      {
+        "@type": "Question",
+        name: "هل لديكم عاملات نظافة بالساعة في قطر؟",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "نعم، نوفر خدمة عاملات نظافة بالساعة في جميع مناطق قطر بما في ذلك الدوحة والوكرة بأفضل الأسعار.",
+        },
+      },
+      ,
+      {
+        "@type": "Question",
+        name: "كيف يمكنني حجز خدمة تنظيف؟",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "يمكنك حجز خدمة التنظيف عبر الاتصال على رقم 55659442 أو عبر واتساب أو من خلال موقعنا الإلكتروني. نحن متاحون 24 ساعة.",
+        },
+      },
+    ],
+  };
+
+  // Remove existing schemas
+  // const existingSchemas = document.querySelectorAll(
+  //   'script[type="application/ld+json"]'
+  // );
+  // existingSchemas.forEach((schema) => schema.remove());
+
+  // Add all schemas
+  const schemas = [serviceSchema, breadcrumbSchema, faqSchema];
+  schemas.forEach((schema) => {
+    const script = document.createElement("script");
+    script.type = "application/ld+json";
+    script.textContent = JSON.stringify(schema);
+    document.head.appendChild(script);
+  });
+}
+
+// Get service slug from URL
+function getServiceSlug() {
+  const urlParams = new URLSearchParams(window.location.search);
+  return urlParams.get("service") || window.location.pathname.split("/").pop();
+}
+
+// Initialize on page load
+window.addEventListener("DOMContentLoaded", function () {
+  const slug = getServiceSlug();
+  const service = servicesData.find((s) => s.slug === slug);
+
+  if (service) {
+    applyServicePageSEO(service);
+    displayServiceContent(service);
+  } else {
+    window.location.href = "/services";
+  }
+});
+
+function displayServiceContent(service) {
+  console.log("Displaying service:", service.name);
+}

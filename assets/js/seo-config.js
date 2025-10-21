@@ -138,6 +138,7 @@ function applySEO(seoData) {
   document.title = seoData.title;
 
   // Update or Create Meta Tags
+  updateMetaTag("name", "title", seoData.title);
   updateMetaTag("name", "description", seoData.description);
   updateMetaTag("name", "keywords", seoData.keywords);
 
