@@ -366,7 +366,10 @@ function applyServicePageSEO(service) {
       url: "https://rasalkhaima-cleaning.com",
       address: {
         "@type": "PostalAddress",
+        streetAddress: "العزيزية الشارع التجاري",
         addressLocality: "الدوحة",
+        addressRegion: "الدوحة",
+        postalCode: "00000",
         addressCountry: "QA",
       },
     },
@@ -386,6 +389,10 @@ function applyServicePageSEO(service) {
       reviewCount: "200",
       bestRating: "5",
       worstRating: "1",
+      itemReviewed: {
+        "@type": "Service",
+        name: service.name,
+      }
     },
   };
 
