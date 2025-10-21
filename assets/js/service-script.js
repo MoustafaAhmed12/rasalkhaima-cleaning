@@ -26,7 +26,7 @@ function displayService(service) {
   // تحديث الـ SEO
   document.getElementById(
     "page-title"
-  ).textContent = `${service.name} - راس الخيمة للتنظيفات`;
+  ).textContent = `${service.name} - رأس الخيمة للتنظيفات`;
   document.getElementById("page-description").content = service.description;
 
   // إنشاء HTML للخدمة
@@ -175,7 +175,7 @@ function displayService(service) {
 function displayNotFound() {
   const container = document.getElementById("service-container");
   document.getElementById("page-title").textContent =
-    "الخدمة غير موجودة - راس الخيمة";
+    "الخدمة غير موجودة - رأس الخيمة";
 
   const html = `
         <div class="not-found">
