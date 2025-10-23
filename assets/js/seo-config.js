@@ -77,7 +77,7 @@ const portfolioSEO = {
   description: "شاهد معرض أعمالنا في التنظيف - صور وفيديوهات حقيقية لمشاريعنا في قطر. تنظيف منازل، فلل، مكاتب، جلي رخام. جودة مضمونة ونتائج مبهرة",
   keywords: "أعمال شركة تنظيف قطر, معرض أعمال التنظيف, صور تنظيف منازل, قبل وبعد التنظيف, نتائج تنظيف احترافي, مشاريع تنظيف قطر, فيديو تنظيف, صور نتائج التنظيف",
   canonical: "https://rasalkhaima-cleaning.com/portfolio",
-  ogImage: "https://rasalkhaima-cleaning.com/assets/images/og-portfolio.jpg",
+  ogImage: "https://rasalkhaima-cleaning.com/assets/images/logo.webp",
   ogType: "website",
   schema: {
     "@context": "https://schema.org",
