@@ -71,6 +71,33 @@ const contactSEO = {
   },
 };
 
+// 5. SEO لصفحة أعمالنا (Portfolio Page)
+const portfolioSEO = {
+  title: "أعمالنا - راس الخيمة للتنظيفات | معرض أعمال التنظيف",
+  description: "شاهد معرض أعمالنا في التنظيف - صور وفيديوهات حقيقية لمشاريعنا في قطر. تنظيف منازل، فلل، مكاتب، جلي رخام. جودة مضمونة ونتائج مبهرة",
+  keywords: "أعمال شركة تنظيف قطر, معرض أعمال التنظيف, صور تنظيف منازل, قبل وبعد التنظيف, نتائج تنظيف احترافي, مشاريع تنظيف قطر, فيديو تنظيف, صور نتائج التنظيف",
+  canonical: "https://rasalkhaima-cleaning.com/portfolio",
+  ogImage: "https://rasalkhaima-cleaning.com/assets/images/og-portfolio.jpg",
+  ogType: "website",
+  schema: {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "أعمالنا - معرض أعمال التنظيف",
+    "description": "معرض صور وفيديوهات لأعمالنا في مجال التنظيف",
+    "url": "https://rasalkhaima-cleaning.com/portfolio",
+    "provider": {
+      "@type": "LocalBusiness",
+      "name": "راس الخيمة للتنظيفات",
+      "telephone": "+974-55659442",
+      "url": "https://rasalkhaima-cleaning.com"
+    },
+    "mainEntity": {
+      "@type": "ImageGallery",
+      "name": "معرض صور أعمال التنظيف",
+      "description": "صور حقيقية من مشاريعنا المنجزة"
+    }
+  }
+}
 // 5. SEO لصفحات الخدمات الفردية (Dynamic Service Pages)
 const generateServiceSEO = (service) => {
   const serviceKeywords = {
@@ -228,23 +255,29 @@ function addSchemaMarkup(schema) {
 function autoApplySEO() {
   const path = window.location.pathname;
   const params = new URLSearchParams(window.location.search);
-
-  if (path === "/" || path === "/index.html") {
+  
+  if (path === '/' || path === '/index.html') {
     // Home Page
     applySEO(homeSEO);
-  } else if (path.includes("/about") || path.includes("about.html")) {
+  } else if (path.includes('/about') || path.includes('about.html')) {
     // About Page
     applySEO(aboutSEO);
-  } else if (path.includes("/services") || path.includes("services.html")) {
+  } else if (path.includes('/services') || path.includes('services.html')) {
     // Services Page
     applySEO(servicesSEO);
-  } else if (path.includes("/contact") || path.includes("contact.html")) {
+  } else if (path.includes('/contact') || path.includes('contact.html')) {
     // Contact Page
     applySEO(contactSEO);
-  } else if (params.has("service") || path.includes("/service/")) {
+  } 
+  else if (path.includes('/portfolio') || path.includes('portfolio.html')) {
+    // Contact Page
+    applySEO(portfolioSEO);
+  }
+  
+  else if (params.has('service') || path.includes('/service/')) {
     // Individual Service Page - needs service data
     // This will be called from the service page script
-    return "service-page";
+    return 'service-page';
   }
 }
 
@@ -255,6 +288,7 @@ if (typeof module !== "undefined" && module.exports) {
     aboutSEO,
     servicesSEO,
     contactSEO,
+    portfolioSEO,
     generateServiceSEO,
     applySEO,
     autoApplySEO,

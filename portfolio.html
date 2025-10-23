@@ -5,20 +5,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title id="page-title">تحميل...</title>
-    <meta name="description" id="page-description" content="" />
-    <meta name="keywords" id="page-keywords" content="" />
-    <meta property="og:title" content="" id="og-title" />
-    <meta property="og:description" content="" id="og-description" />
-    <meta property="og:url" content="" id="og-url" />
-    <meta property="og:image" content="" id="og-image" />
-    <meta property="og:type" content="article" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="" id="twitter-title" />
-    <meta name="twitter:description" content="" id="twitter-description" />
-    <meta name="twitter:image" content="" id="twitter-image" />
-    <link rel="canonical" href="" id="canonical-url" />
-
     <meta name="author" content="شركة رأس الخيمة للتنظيفات" />
     <meta name="business:contact_data:locality" content="Doha" />
     <meta name="business:contact_data:country_name" content="Qatar" />
@@ -39,6 +25,12 @@
     <meta property="og:image:alt" content="شركة رأس الخيمة للتنظيفات في قطر" />
     <meta property="og:locale" content="ar_QA" />
 
+    <!-- Canonical URL -->
+    <link
+      rel="canonical"
+      href="https://rasalkhaima-cleaning.com/portfolio.html"
+    />
+
     <!-- Favicon -->
     <link
       rel="icon"
@@ -58,6 +50,8 @@
       href="assets/images/favicon/apple-touch-icon.png"
     />
     <link rel="manifest" href="assets/images/favicon/site.webmanifest" />
+    <!-- SEO Config -->
+    <script src="assets/js/seo-config.js" defer></script>
     <!-- Google Analytics -->
     <script
       async
@@ -98,22 +92,18 @@
 
     <!-- ======= Styles =======-->
     <link href="assets/vendors/bootstrap/bootstrap.min.css" rel="stylesheet" />
-    <!-- <link
-      href="assets/vendors/bootstrap-icons/font/bootstrap-icons.min.css"
-      rel="stylesheet"
-    /> -->
     <link href="assets/vendors/aos/aos.css" rel="stylesheet" />
     <!-- End Styles-->
 
     <!-- ======= Theme Style =======-->
     <link href="assets/css/style.css" rel="stylesheet" />
     <link href="assets/css/main.css" rel="stylesheet" />
-    <!-- End Theme Style-->
   </head>
   <body>
     <div class="site-wrap">
+      <!-- Header -->
       <header
-        class="fbs__net-navbar navbar navbar-expand-lg dark border-bottom shadow-lg"
+        class="fbs__net-navbar navbar navbar-expand-lg dark shadow-lg"
         aria-label="rasalkhaima-cleaning.com navbar"
       >
         <div
@@ -166,7 +156,10 @@
             <div class="offcanvas-body align-items-lg-center">
               <ul class="navbar-nav nav m-auto ps-lg-5 mb-2 mb-lg-0">
                 <li class="nav-item">
-                  <a class="nav-link scroll-link" aria-current="page" href="/"
+                  <a
+                    class="nav-link scroll-link"
+                    aria-current="page"
+                    href="index.html"
                     >الرئيسية</a
                   >
                 </li>
@@ -174,12 +167,12 @@
                   <a class="nav-link scroll-link" href="about.html">من نحن</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link scroll-link active" href="services.html"
+                  <a class="nav-link scroll-link" href="services.html"
                     >خدماتنا</a
                   >
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link scroll-link" href="portfolio.html"
+                  <a class="nav-link scroll-link active" href="portfolio.html"
                     >أعمالنا</a
                   >
                 </li>
@@ -241,7 +234,285 @@
           </div>
         </div>
       </header>
-      <main id="service-container" style="padding-top: 100px"></main>
+
+      <main style="padding-top: 100px">
+        <section class="portfolio-hero">
+          <div class="container">
+            <div class="portfolio-hero-content">
+              <div class="portfolio-hero-badge">معرض أعمالنا 📸</div>
+              <h1 class="portfolio-hero-title text-white">أعمالنا</h1>
+              <p class="portfolio-hero-subtitle">
+                شاهد معرض أعمالنا ونتائجنا المميزة في مجال التنظيف. نفخر
+                بإنجازاتنا وثقة عملائنا بنا
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section class="portfolio-main">
+          <div class="container">
+            <!-- Video Section -->
+            <div class="portfolio-section">
+              <h2 class="portfolio-section-title">فيديو من أعمالنا</h2>
+              <p class="portfolio-section-subtitle">
+                شاهد فريق العمل أثناء تقديم خدمات التنظيف الاحترافية
+              </p>
+
+              <div
+                class="portfolio-video-wrapper"
+                style="
+                  position: relative;
+                  aspect-ratio: 16/9;
+                  overflow: hidden;
+                  border-radius: 12px;
+                "
+              >
+                <iframe
+                  width="100%"
+                  height="100%"
+                  src="https://www.youtube.com/embed/e_grWOGmuSk?rel=0"
+                  title="YouTube video player"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowfullscreen
+                ></iframe>
+              </div>
+            </div>
+
+            <!-- Gallery Section -->
+            <div class="portfolio-section">
+              <h2 class="portfolio-section-title">معرض الصور</h2>
+              <p class="portfolio-section-subtitle">
+                صور حقيقية من مشاريعنا المنجزة - قبل وبعد التنظيف
+              </p>
+
+              <div class="portfolio-gallery">
+                <!-- Image 1 -->
+                <div class="portfolio-item" onclick="openLightbox(this)">
+                  <!-- src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=400&h=400&fit=crop" -->
+                  <img
+                    src="assets/images/p1.jpg"
+                    alt="تنظيف منزل"
+                    class="portfolio-item-image"
+                  />
+                  <div class="portfolio-item-overlay">
+                    <!-- <h3 class="portfolio-item-title">تنظيف منزل فاخر</h3> -->
+                    <div class="portfolio-item-icon">🔍</div>
+                  </div>
+                </div>
+
+                <!-- Image 2 -->
+                <div class="portfolio-item" onclick="openLightbox(this)">
+                  <!-- src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=400&h=400&fit=crop" -->
+                  <img
+                    src="assets/images/p2.jpg"
+                    alt="تنظيف شقة"
+                    class="portfolio-item-image"
+                  />
+                  <div class="portfolio-item-overlay">
+                    <div class="portfolio-item-icon">🔍</div>
+                  </div>
+                </div>
+
+                <!-- Image 3 -->
+                <div class="portfolio-item" onclick="openLightbox(this)">
+                  <!-- src="https://images.unsplash.com/photo-1628177142898-93e36e4e3a50?w=400&h=400&fit=crop" -->
+                  <img
+                    src="assets/images/p3.jpg"
+                    alt="تنظيف فيلا"
+                    class="portfolio-item-image"
+                  />
+                  <div class="portfolio-item-overlay">
+                    <div class="portfolio-item-icon">🔍</div>
+                  </div>
+                </div>
+
+                <!-- Image 4 -->
+                <div class="portfolio-item" onclick="openLightbox(this)">
+                  <!-- src="https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?w=400&h=400&fit=crop" -->
+                  <img
+                    src="assets/images/p4.jpg"
+                    alt="تنظيف مكتب"
+                    class="portfolio-item-image"
+                  />
+                  <div class="portfolio-item-overlay">
+                    <div class="portfolio-item-icon">🔍</div>
+                  </div>
+                </div>
+
+                <!-- Image 5 -->
+                <div class="portfolio-item" onclick="openLightbox(this)">
+                  <!-- src="https://images.unsplash.com/photo-1563453392212-326f5e854473?w=400&h=400&fit=crop" -->
+                  <img
+                    src="assets/images/p5.jpg"
+                    alt="تنظيف كنب"
+                    class="portfolio-item-image"
+                  />
+                  <div class="portfolio-item-overlay">
+                    <div class="portfolio-item-icon">🔍</div>
+                  </div>
+                </div>
+
+                <!-- Image 6 -->
+                <div class="portfolio-item" onclick="openLightbox(this)">
+                  <!-- src="https://images.unsplash.com/photo-1585421514738-01798e348b17?w=400&h=400&fit=crop" -->
+                  <img
+                    src="assets/images/p6.jpg"
+                    alt="تنظيف مطبخ"
+                    class="portfolio-item-image"
+                  />
+                  <div class="portfolio-item-overlay">
+                    <div class="portfolio-item-icon">🔍</div>
+                  </div>
+                </div>
+
+                <!-- Image 7 -->
+                <!-- <div class="portfolio-item" onclick="openLightbox(this)">
+                  <img
+                    src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=400&h=400&fit=crop"
+                    alt="تنظيف حمام"
+                    class="portfolio-item-image"
+                  />
+                  <div class="portfolio-item-overlay">
+                    <h3 class="portfolio-item-title">تنظيف حمام</h3>
+                    <div class="portfolio-item-icon">🔍</div>
+                  </div>
+                </div> -->
+
+                <!-- Image 8 -->
+                <!-- <div class="portfolio-item" onclick="openLightbox(this)">
+                  <img
+                    src="https://images.unsplash.com/photo-1582735689369-4fe89db7114c?w=400&h=400&fit=crop"
+                    alt="تنظيف نوافذ"
+                    class="portfolio-item-image"
+                  />
+                  <div class="portfolio-item-overlay">
+                    <h3 class="portfolio-item-title">تنظيف نوافذ</h3>
+                    <div class="portfolio-item-icon">🔍</div>
+                  </div>
+                </div> -->
+
+                <!-- Image 9 -->
+                <!-- <div class="portfolio-item" onclick="openLightbox(this)">
+                  <img
+                    src="https://images.unsplash.com/photo-1556911220-bff31c812dba?w=400&h=400&fit=crop"
+                    alt="مكافحة حشرات"
+                    class="portfolio-item-image"
+                  />
+                  <div class="portfolio-item-overlay">
+                    <h3 class="portfolio-item-title">مكافحة حشرات</h3>
+                    <div class="portfolio-item-icon">🔍</div>
+                  </div>
+                </div> -->
+
+                <!-- Image 10 -->
+                <!-- <div class="portfolio-item" onclick="openLightbox(this)">
+                  <img
+                    src="https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?w=400&h=400&fit=crop"
+                    alt="جلي رخام"
+                    class="portfolio-item-image"
+                  />
+                  <div class="portfolio-item-overlay">
+                    <h3 class="portfolio-item-title">جلي وتلميع رخام</h3>
+                    <div class="portfolio-item-icon">🔍</div>
+                  </div>
+                </div> -->
+
+                <!-- Image 11 -->
+                <!-- <div class="portfolio-item" onclick="openLightbox(this)">
+                  <img
+                    src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=400&h=400&fit=crop"
+                    alt="تنظيف شامل"
+                    class="portfolio-item-image"
+                  />
+                  <div class="portfolio-item-overlay">
+                    <h3 class="portfolio-item-title">تنظيف شامل</h3>
+                    <div class="portfolio-item-icon">🔍</div>
+                  </div>
+                </div> -->
+
+                <!-- Image 12 -->
+                <!-- <div class="portfolio-item" onclick="openLightbox(this)">
+                  <img
+                    src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=400&h=400&fit=crop"
+                    alt="نتيجة نهائية"
+                    class="portfolio-item-image"
+                  />
+                  <div class="portfolio-item-overlay">
+                    <h3 class="portfolio-item-title">نتائج مبهرة</h3>
+                    <div class="portfolio-item-icon">🔍</div>
+                  </div>
+                </div> -->
+              </div>
+            </div>
+
+            <!-- Stats Section -->
+            <div class="portfolio-stats">
+              <div class="row">
+                <div class="col-lg-3 col-6">
+                  <div class="portfolio-stat-item">
+                    <div class="portfolio-stat-number">500+</div>
+                    <div class="portfolio-stat-label">مشروع منجز</div>
+                  </div>
+                </div>
+                <div class="col-lg-3 col-6">
+                  <div class="portfolio-stat-item">
+                    <div class="portfolio-stat-number">15+</div>
+                    <div class="portfolio-stat-label">سنة خبرة</div>
+                  </div>
+                </div>
+                <div class="col-lg-3 col-6">
+                  <div class="portfolio-stat-item">
+                    <div class="portfolio-stat-number">100%</div>
+                    <div class="portfolio-stat-label">رضا العملاء</div>
+                  </div>
+                </div>
+                <div class="col-lg-3 col-6">
+                  <div class="portfolio-stat-item">
+                    <div class="portfolio-stat-number">24/7</div>
+                    <div class="portfolio-stat-label">خدمة متواصلة</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- CTA Section -->
+            <div class="portfolio-cta">
+              <h2 class="portfolio-cta-title">هل أعجبتك أعمالنا؟</h2>
+              <p class="portfolio-cta-text">
+                احجز خدمتك الآن واحصل على نفس النتائج المبهرة. نحن جاهزون لخدمتك
+                على مدار الساعة
+              </p>
+              <div class="portfolio-cta-buttons">
+                <a
+                  href="tel:+97455659442"
+                  class="portfolio-btn portfolio-btn-primary"
+                >
+                  📞 اتصل: 55659442
+                </a>
+                <a
+                  href="https://wa.me/97455659442?text=مرحباً، شاهدت أعمالكم وأريد حجز خدمة"
+                  target="_blank"
+                  class="portfolio-btn portfolio-btn-whatsapp"
+                >
+                  💬 واتساب
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Lightbox -->
+        <div class="portfolio-lightbox" id="lightbox" onclick="closeLightbox()">
+          <span class="portfolio-lightbox-close">×</span>
+          <img
+            src=""
+            alt=""
+            class="portfolio-lightbox-image"
+            id="lightbox-image"
+          />
+        </div>
+      </main>
 
       <!-- ======= Footer =======-->
       <div class="fixed-contact-icons fixed-whatsapp">
@@ -331,11 +602,11 @@
               <div class="col-lg-4 col-md-6">
                 <div class="footer-logo">
                   <img
-                    width="100%"
-                    height="100%"
                     src="assets/images/logo.webp"
                     alt="شركة رأس الخيمة"
                     onerror="this.style.display='none'"
+                    width="100%"
+                    height="100%"
                   />
                 </div>
                 <h3 class="footer-title">شركة رأس الخيمة للخدمات المنزلية</h3>
@@ -569,6 +840,7 @@
       </footer>
       <!-- End Footer-->
     </div>
+
     <button id="back-to-top">
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -585,8 +857,9 @@
         />
       </svg>
     </button>
-    <script defer src="assets/js/service-data.js"></script>
-    <script defer src="assets/js/service-script.js"></script>
+    <!-- End Back to top-->
+
+    <!-- ======= Javascripts =======-->
     <script
       defer
       src="assets/vendors/bootstrap/bootstrap.bundle.min.js"
@@ -594,5 +867,36 @@
     <script defer src="assets/vendors/aos/aos.js"></script>
     <script defer src="assets/vendors/purecounter/purecounter.js"></script>
     <script defer src="assets/js/custom.js"></script>
+    <script>
+      // Lightbox functionality
+      function openLightbox(element) {
+        const img = element.querySelector(".portfolio-item-image");
+        const lightbox = document.getElementById("lightbox");
+        const lightboxImage = document.getElementById("lightbox-image");
+
+        lightboxImage.src = img.src.replace("w=400&h=400", "w=1200&h=1200");
+        lightboxImage.alt = img.alt;
+        lightbox.classList.add("active");
+
+        // Prevent body scroll
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeLightbox() {
+        const lightbox = document.getElementById("lightbox");
+        lightbox.classList.remove("active");
+
+        // Restore body scroll
+        document.body.style.overflow = "auto";
+      }
+
+      // Close lightbox on ESC key
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") {
+          closeLightbox();
+        }
+      });
+    </script>
+    <!-- End JavaScripts-->
   </body>
 </html>

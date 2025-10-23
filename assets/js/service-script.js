@@ -128,7 +128,7 @@ function displayService(service) {
 
               <!-- Sidebar Column -->
               <div class="col-lg-4">
-                <div class="one-service-sidebar" data-aos="fade-up">
+                <div class="one-service-sidebar" >
                   <!-- Price Card -->
                   <div class="one-service-price-card">
                     <p class="one-service-price-title">احجز الآن</p>
