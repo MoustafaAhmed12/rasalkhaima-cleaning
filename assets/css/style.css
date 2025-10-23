@@ -409,8 +409,8 @@ h6 {
   position: relative;
   z-index: 9;
   width: 100%;
-  height: 500px;
-  max-height: 550px;
+  height: 400px;
+  max-height: 400px;
   object-fit: fill;
   display: block;
   margin: 0 auto;
